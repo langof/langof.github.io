@@ -8,7 +8,7 @@ git pull origin master --rebase
 
 cp -R src/dist/* .
 
-git clean -fx src
+git clean -fd src
 
 git add .
 
