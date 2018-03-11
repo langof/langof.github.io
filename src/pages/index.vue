@@ -1,101 +1,129 @@
 <template>
   <v-layout class="body" elevation-24>
     <img class="logo" src="/logo.png">
-    <v-form>
-      <input type="text" v-model="eventCode" placeholder="Event Code">
-      <div class="buttons">
-        <v-btn class="join" round :disabled="joinValidate" flat>JOIN</v-btn>
-        <v-btn class="make" @click="createEvent" round :disabled="makeValidate" flat>
-          CREATE
-        </v-btn>
-      </div>
-    </v-form>
+    <input type="text" v-model="eventCode" @keyup.enter="keyupEnter()" placeholder="Event Code">
+    <div class="buttons">
+      <v-btn class="join" @click.native.stop="joinEvent" round :disabled="!joinValidate" flat>
+        JOIN
+      </v-btn>
+      <v-btn class="make" @click.native.stop="createEvent" round :disabled="!makeValidate" flat>
+        CREATE
+      </v-btn>
+      <v-dialog v-model="dialog" persistent max-width="290">
+        <v-card>
+          <v-card-title class="headline">브라우저 미지원</v-card-title>
+          <v-card-text>WEB Speech API는</v-card-text>
+          <v-card-text>크롬 브라우저만 지원합니다.</v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="green darken-1" flat @click.native="dialog = false">확인</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </div>
   </v-layout>
 </template>
 
 <script>
-import { DB } from '../plugins/vuefire'
-import _ from 'lodash'
+	import {DB} from '../plugins/vuefire'
+	import {detect} from 'detect-browser'
+	import _ from 'lodash'
 
-export default {
-  data() {
-    return {
-      eventCode: ''
-    }
-  },
-  firebase: {
-    events: DB.ref('/eventInfo')
-  },
-  methods: {
-    createEvent: function() {
-      DB.ref('/eventInfo').push({ code: this.eventCode })
-      this.$router.push(`admin/#${this.eventCode}`)
-    }
-  },
-  computed: {
-    joinValidate: function() {
-      return (
-        !this.eventCode ||
-        _.findIndex(this.events, e => e.code === this.eventCode) === -1
-      )
-    },
-    makeValidate: function() {
-      return (
-        !this.eventCode ||
-        _.findIndex(this.events, e => e.code === this.eventCode) !== -1
-      )
-    }
-  }
-}
+	export default {
+		name: "index",
+		data() {
+			return {
+				eventCode: '',
+				dialog: false,
+				browser: ''
+			}
+		},
+		firebase: {
+			events: DB.ref('/eventInfo')
+		},
+		created: function () {
+			this.browser = detect()
+		},
+		methods: {
+			createEvent: function () {
+				if (!this.isSupport()) {
+					return this.dialog = true
+				}
+				DB.ref('/eventInfo').push({code: this.eventCode})
+				this.$router.push(`admin/#${this.eventCode}`)
+			},
+			joinEvent() {
+				this.$router.push(`event/#${this.eventCode}`)
+			},
+			isSupport: function () {
+				return this.browser && this.browser.name === 'chrome'
+			},
+			keyupEnter() {
+				this.joinValidate && this.joinEvent()
+				this.makeValidate && this.createEvent()
+			}
+		},
+		computed: {
+			joinValidate: function () {
+				return this.eventCode && _.findIndex(this.events, e => e.code === this.eventCode) !== -1
+			},
+			makeValidate: function () {
+				return this.eventCode && _.findIndex(this.events, e => e.code === this.eventCode) === -1
+			}
+		}
+	}
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/css/_variables.scss';
+  @import '../assets/css/_variables.scss';
 
-.body {
-  padding: 30px;
-  border-radius: 12px;
-  color: $Foreground;
-  background: $Background;
-  max-width: 280px;
-  display: grid;
-  overflow: hidden;
-  justify-items: center;
-  .logo {
-    height: 60px;
-    margin-bottom: 20px;
-  }
-  form {
+  .body {
+    padding: 30px;
+    border-radius: 12px;
+    color: $Foreground;
+    background: $Background;
+    max-width: 280px;
     display: grid;
+    overflow: hidden;
     justify-items: center;
-  }
-  input {
-    font-size: 1.5rem;
-    border: 1px solid $Foreground;
-    padding: 5px;
-    text-align: center;
-    width: 192px;
-    border-radius: 200px;
-    outline: none;
-  }
-  .buttons {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    .join {
-      background: $Purple !important;
-      font-size: 1.2rem;
-      &.btn--disabled {
-        background: grey !important;
+    .logo {
+      height: 60px;
+      margin-bottom: 20px;
+    }
+    input {
+      font-size: 1.5rem;
+      border: 1px solid $Foreground;
+      padding: 5px;
+      text-align: center;
+      width: 192px;
+      border-radius: 200px;
+      outline: none;
+    }
+    .buttons {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      .join {
+        background: $Purple !important;
+        font-size: 1.2rem;
+        &.btn--disabled {
+          background: grey !important;
+        }
+      }
+      .make {
+        background: $Purple !important;
+        font-size: 1.2rem;
+        &.btn--disabled {
+          background: grey !important;
+        }
       }
     }
-    .make {
-      background: $Purple !important;
-      font-size: 1.2rem;
-      &.btn--disabled {
-        background: grey !important;
-      }
+  }
+
+  .dialog {
+    .card {
+      background: $Foreground;
+      color: black;
     }
   }
-}
 </style>

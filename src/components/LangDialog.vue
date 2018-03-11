@@ -42,7 +42,6 @@ export default {
   props: ['langs', 'status'],
   computed: {
     getCurrentLanguage() {
-      // console.log(this.$store.state[this.status])
       return this.$store.state[this.status]
     }
   },

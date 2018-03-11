@@ -26,7 +26,6 @@ html {
 }
 body {
   height: 100%;
-  background: $Selection;
   color: $Foreground;
   overflow: hidden;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
@@ -39,7 +38,7 @@ body {
     display: flex;
     height: 100vh;
     width: 100vw;
-    background: $Selection;
+    background: linear-gradient(135deg, rgb(48,35,174) 0%,rgb(200,109,215) 100%);
     overflow: hidden;
     justify-content: center;
     align-items: center;

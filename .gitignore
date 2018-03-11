@@ -1,5 +1,5 @@
 # dependencies
-node_modules
+src/node_modules
 
 # logs
 npm-debug.log
@@ -9,3 +9,4 @@ npm-debug.log
 .editorconfig
 .DS_Store
 dist
+.idea
