@@ -40,10 +40,6 @@ module.exports = {
 				rel: 'stylesheet',
 				href: 'https://fonts.googleapis.com/css?family=Quicksand'
 			},
-			{
-				rel: 'stylesheet',
-				href: 'http://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css'
-			},
 		]
 	},
 
@@ -58,7 +54,8 @@ module.exports = {
 	 ** Global CSS
 	 */
 	css: [
-		'vuetify/src/stylus/main.styl'
+		'vuetify/src/stylus/main.styl',
+		'font-awesome/scss/font-awesome.scss',
 	],
 
 	/*

@@ -9,10 +9,7 @@
           <a href="#">Home</a>
         </li>
         <li>
-          <a href="#">Products</a>
-        </li>
-        <li>
-          <a href="#">About</a>
+          <a href="#">Features</a>
         </li>
         <li>
           <a href="#">Contacts</a>
@@ -24,35 +21,32 @@
     <section class="hero">
       <div class="background-image"></div>
       <h1>Internationalize Your Event</h1>
-      <h3>Real-Time Translation for your Meetings & Events.</h3>
+      <h3>Real-Time Multi-Language Translation for your Meetings & Events.</h3>
       <event-join></event-join>
     </section>
 
 
     <section class="features">
       <h3 class="title">Features and services</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices. Morbi
-        vitae
-        pulvinar
-        velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
+      <p>Lango is real-time multi-language translation service for your meetings, events and conferences.</p>
       <hr>
 
       <ul class="grid">
         <li>
-          <i class="fa fa-camera-retro"></i>
-          <h4>Photography</h4>
+          <i class="fa fa-commenting"></i>
+          <h4>Speech Recognition</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae
             pulvinar velit.</p>
         </li>
         <li>
-          <i class="fa fa-cubes"></i>
-          <h4>Web Development</h4>
+          <i class="fa fa-language"></i>
+          <h4>Real-Time Translation</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae
             pulvinar velit.</p>
         </li>
         <li>
-          <i class="fa fa-newspaper-o"></i>
-          <h4>Content Editing</h4>
+          <i class="fa fa-globe"></i>
+          <h4>Multi-Language Support</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae
             pulvinar velit.</p>
         </li>

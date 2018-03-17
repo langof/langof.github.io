@@ -16,6 +16,7 @@
     "axios": "^0.18.0",
     "detect-browser": "^2.1.0",
     "firebase": "^4.10.1",
+    "font-awesome": "^4.7.0",
     "lodash": "^4.17.5",
     "nuxt": "^1.0.0",
     "vuefire": "^1.4.5",
