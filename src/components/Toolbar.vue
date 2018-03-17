@@ -30,7 +30,7 @@
     .layout {
       display: grid;
       .logo {
-        height: $HEADER_HEIGHT - 16px;
+        height: $HEADER_HEIGHT - 24px;
         justify-self: center;
         align-self: center;
       }

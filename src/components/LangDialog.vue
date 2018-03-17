@@ -72,8 +72,8 @@ export default {
   margin: 0;
   width: 100%;
   border-radius: 0;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   .icon {
     padding-bottom: 2px;
   }

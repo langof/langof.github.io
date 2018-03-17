@@ -2,7 +2,7 @@
   <v-layout class="contain">
     <Toolbar></Toolbar>
     <v-layout class="status">
-      <v-btn round color="cyan" @click.stop="toggleRecognition()">{{ buttonText }}</v-btn>
+      <v-btn round :color="button.color" @click.stop="toggleRecognition()">{{ button.text }}</v-btn>
     </v-layout>
     <v-layout class="display-box">
       <span style="display:none">{{ target }}</span>
@@ -22,10 +22,14 @@
 
 	export default {
 		name: "admin",
+		layout: 'default',
 		data() {
 			return {
 				isRecognize: false,
-				buttonText: 'Start Recognition',
+        button: {
+          text: 'Start',
+          color: 'teal'
+        },
 				languages: this.$store.state.languages,
 				transcript: '',
 				transcripts: {},
@@ -83,11 +87,14 @@
 			},
 			toggleRecognition() {
 				if (this.isRecognize) {
+					this.$store.state.recognition.abort()
 					this.$store.state.recognition.stop()
-					this.buttonText = 'Start Recognition'
+					this.button.text = 'Start'
+          this.button.color = 'teal'
 				} else {
 					this.$store.state.recognition.start()
-					this.buttonText = 'Stop Recognition'
+					this.button.text = 'Stop'
+					this.button.color = 'pink'
 				}
 				this.isRecognize = !this.isRecognize
 			},
@@ -130,12 +137,16 @@
   .contain {
     display: grid;
     width: 100%;
+    max-width: 1200px;
     height: 100%;
     grid-template-rows: $HEADER_HEIGHT $HEADER_HEIGHT 1fr;
     .status {
       display: flex;
       width: 100%;
       justify-content: center;
+      .btn {
+        box-shadow: none;
+      }
     }
     .display-box {
       display: flex;

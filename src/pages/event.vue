@@ -16,9 +16,11 @@
 
 	export default {
 		name: "event",
+		layout: 'default',
 		data() {
 			return {
 				languages: this.$store.state.languages,
+				transcripts: []
 			}
 		},
 		firebase: function () {
@@ -54,6 +56,7 @@
   .contain {
     display: grid;
     width: 100%;
+    max-width: 800px;
     height: 100%;
     grid-template-rows: $HEADER_HEIGHT 1fr;
   }

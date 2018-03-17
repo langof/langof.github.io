@@ -5,9 +5,9 @@
       <v-layout class="scripts" @scroll="scriptScroll">
         <v-layout class="script">
           <span v-show="transcript">{{ transcript }}</span>
-          <span v-for="(script, i) in reversedScript" :key="script['.key']">
-            <span :class="{ 'mini-script': transcripts }"> {{ getScript(script) }} </span>
-            {{ getScript(reversedTranscript[i]) }}
+          <span class="box" v-for="(script, i) in reversedScript" :key="script['.key']">
+            <span :class="{ 'mini-script': transcripts, 'wrap': !transcripts }"> {{ getScript(script) }} </span>
+            <span class="wrap" v-if="transcripts">{{ getScript(reversedTranscript[i]) }}</span>
           </span>
         </v-layout>
       </v-layout>
@@ -57,23 +57,35 @@
       display: flex;
       flex-direction: column;
       background: $Selection;
-      border-radius: 10px;
+      border-radius: 4px;
       align-content: start;
       .scripts {
         position: relative;
         height: 100%;
         overflow: auto;
-        scroll: i;
+        -webkit-overflow-scrolling: touch;
         .script {
           position: absolute;
           padding: 8px;
           display: grid;
+          grid-auto-flow: row;
           align-content: start;
           grid-gap: 8px;
           font-size: 1.5rem;
           .mini-script {
             display: block;
             font-size: 0.8rem;
+            color: $Foreground;
+            padding: 2px;
+          }
+          .box {
+            color: $Background;
+            .wrap {
+              display: inline-block;
+              background: $Foreground;
+              border-radius: 8px;
+              padding: 6px;
+            }
           }
         }
       }
