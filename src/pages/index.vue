@@ -126,6 +126,12 @@
   @import url("../assets/css/styles.css");
 
   .background-image {
-    background-image: url("../static/slide_conference.jpg");
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-size: auto;
+    z-index: -1;
+    background: #2196F3 url("../static/slide_conference.jpg") no-repeat fixed;
   }
+
 </style>
