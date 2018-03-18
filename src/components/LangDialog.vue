@@ -90,7 +90,7 @@ export default {
   .card__text {
     display: grid;
     padding: 0;
-    height: 180px;
+    height: 205px;
     .btn {
       display: grid;
       height: 45px;

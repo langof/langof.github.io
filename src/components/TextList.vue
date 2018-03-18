@@ -6,7 +6,8 @@
         <v-layout class="script">
           <span v-show="transcript">{{ transcript }}</span>
           <span class="box" v-for="(script, i) in reversedScript" :key="script['.key']">
-            <span :class="{ 'mini-script': transcripts, 'wrap': !transcripts }"> {{ getScript(script) }} </span>
+            <span :class="{ 'mini-script': transcripts, 'wrap': !transcripts }" contenteditable
+                  @keydown.enter.prevent="keyupEnter"> {{ getScript(script) }} </span>
             <span class="wrap" v-if="transcripts">{{ getScript(reversedTranscript[i]) }}</span>
           </span>
         </v-layout>
@@ -29,6 +30,11 @@
 					document.querySelectorAll('.scripts')[0].scrollTop = e.target.scrollTop
 					document.querySelectorAll('.scripts')[1].scrollTop = e.target.scrollTop
 				}
+			},
+			keyupEnter(e) {
+				e.target.innerHTML = e.target.innerHTML.replace('&nbsp;', '')
+				e.target.blur()
+				console.log(e.target.innerHTML)
 			}
 		},
 		computed: {
@@ -80,8 +86,10 @@
           }
           .box {
             color: $Background;
+            overflow-x: hidden;
             .wrap {
               display: inline-block;
+              max-width: 100%;
               background: $Foreground;
               border-radius: 8px;
               padding: 6px;

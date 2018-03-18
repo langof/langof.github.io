@@ -1,7 +1,10 @@
 <template>
   <v-layout class="contain">
     <Toolbar></Toolbar>
-    <text-list :scripts="scripts" :transcripts="transcripts" :langs="languages" :status="'target'"></text-list>
+    <v-layout class="display-box">
+      <text-list :scripts="scripts" :transcripts="transcripts" :langs="languages" :status="'target'"></text-list>
+      <!--<text-list :scripts="scripts" :transcripts="transcripts" :langs="languages" :status="'target'"></text-list>-->
+    </v-layout>
     <div style="display: none">
       {{ eventCode }}
       {{ target }}
@@ -59,5 +62,10 @@
     max-width: 800px;
     height: 100%;
     grid-template-rows: $HEADER_HEIGHT 1fr;
+    .display-box {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
   }
 </style>

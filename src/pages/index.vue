@@ -9,10 +9,10 @@
           <a href="#">Home</a>
         </li>
         <li>
-          <a href="#">Features</a>
+          <a href="#features">Features</a>
         </li>
         <li>
-          <a href="#">Contacts</a>
+          <a href="#reviews">Contacts</a>
         </li>
       </nav>
     </header>
@@ -26,7 +26,7 @@
     </section>
 
 
-    <section class="features">
+    <section id="features">
       <h3 class="title">Features and services</h3>
       <p>Lango is real-time multi-language translation service for your meetings, events and conferences.</p>
       <hr>
@@ -35,43 +35,33 @@
         <li>
           <i class="fa fa-commenting"></i>
           <h4>Speech Recognition</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae
-            pulvinar velit.</p>
+          <p>In-browser High Quality Real-Time Speech Recognition.</p>
         </li>
         <li>
           <i class="fa fa-language"></i>
           <h4>Real-Time Translation</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae
-            pulvinar velit.</p>
+          <p>Super-Duper Extreme Quality Real-Time Translation.</p>
         </li>
         <li>
           <i class="fa fa-globe"></i>
           <h4>Multi-Language Support</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae
-            pulvinar velit.</p>
+          <p>A Looooooooots of Supported Language.</p>
         </li>
       </ul>
     </section>
 
 
-    <section class="reviews">
+    <section id="reviews">
       <h3 class="title">What others say:</h3>
 
-      <p class="quote">Mauris sit amet mauris a arcu eleifend ultricies eget ut dolor. Class aptent taciti sociosqu ad
-        litora torquent per conubia
-        nostra, per inceptos himenaeos.</p>
-      <p class="author">— Patrick Farrell</p>
+      <p class="quote">This is Aweeeeeeeeeeeeessssssome!!! I love this project!</p>
+      <p class="author">— Nicolas</p>
 
-      <p class="quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum
-        ultrices. Morbi vitae pulvinar
-        velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
-      <p class="author">— George Smith</p>
+      <p class="quote">Ohhhhhhhhh.. Nice Project!</p>
+      <p class="author">— Lynn</p>
 
-      <p class="quote">Donec commodo dolor augue, vitae faucibus tortor tincidunt in. Aliquam vitae leo quis mi pulvinar
-        ornare. Integer eu iaculis
-        metus.
-      </p>
-      <p class="author">— Kevin Blake</p>
+      <p class="quote">This is crazy. I like this.</p>
+      <p class="author">— Chris</p>
 
 
     </section>
@@ -126,7 +116,9 @@
   @import url("../assets/css/styles.css");
 
   .background-image {
-    position: fixed;
+    position: absolute;
+    top:0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-size: auto;
